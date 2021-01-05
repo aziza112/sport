@@ -28,6 +28,10 @@ session_start();
 			if($role == "Admin"){
 				header('location:../../Back/Views/starter.php');
 			}else{
+				$_SESSION['loggedIn'] = 1;
+        $_SESSION['name'] = $message['Nom'];
+        $_SESSION['email'] = $message['Email'];
+        $_SESSION['userID'] = $message['ID'];
 				header('location:acceuil.php');
 			}
 	   }

@@ -54,7 +54,7 @@ include '../controller/UtilisateurC.php';
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>Healing Admin</title>
+    <title>Sport News</title>
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css" />
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
@@ -67,6 +67,7 @@ include '../controller/UtilisateurC.php';
   <body class="align">
 
 <div class="grid">
+<?php require "includes/inc_top.php"; ?>
   <form action="" method="POST" class="form login" id="login-box">
     <div class="form__field">
       <label for="login__username"  style="height:50px">

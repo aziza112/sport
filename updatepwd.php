@@ -42,6 +42,7 @@ include '../controller/UtilisateurC.php';
   <body class="align">
 
 <div class="grid">
+<?php require "includes/inc_top.php"; ?>
   <form action="" method="POST" class="form login" id="login-box">
     <div class="form__field">
       <label for="login__confirmpassword"  style="height:50px">

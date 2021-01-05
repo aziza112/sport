@@ -1,4 +1,34 @@
 
+<?php
+require 'phpmailer/PHPMailerAutoload.php';
+ $mal=$_POST["email"];
+ $ad= $_POST["address"];
+$mail = new PHPMailer();
+
+$mail->isSMTP();
+$mail->Host = "smtp.gmail.com";
+$mail->SMTPSecure = "ssl";
+$mail->Port = 465;
+$mail->SMTPAuth = true;
+$mail->Username = 'sportn083@gmail.com';
+$mail->Password = 'sportnews123';
+
+$mail->setFrom('sportn083@gmail.com', 'sportnews');
+$mail->addAddress( $mal) ;
+$mail->Subject = 'u re order has been received to '.$ad;
+$mail->Body = 'u re order has been received to '.$ad;
+
+if ($mail->send()){
+    echo "Mail sent"; 
+
+}
+    else {echo "Mail niot sent";}
+
+    
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,23 +72,19 @@
 </head>
 
 <body>
-
     <!-- *** TOPBAR ***
  _________________________________________________________ -->
  <div id="top">
         <div class="container">
             <div class="col-md-6 offer" data-animate="fadeInDown">
-                <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake"> Bienvenue </a>  <a href="#">chez Sport News!</a>
-            </div>
+            <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake"> Bienvenue </a>  <a href="#">chez Sport News!</a>            </div>
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
-                   
-                    <li><a href="profil.php">Mon Profil</a>
+                <li><a href="profil.php">Mon Profil</a>
                     </li>
                     <li><a href="logout.php">se deconnecter</a>
                     </li>
-                    <!--<li><a href="#">vu viewed</a>
-                    </li>-->
+                    
                 </ul>
             </div>
         </div>
@@ -71,7 +97,7 @@
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form  method="post">
+                        <form action="customer-orders.html" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="email-modal" placeholder="email">
                             </div>
@@ -86,7 +112,7 @@
                         </form>
 
                         <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="creercompte.php"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+                        <p class="text-center text-muted"><a href="register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
 
                     </div>
                 </div>
@@ -94,7 +120,6 @@
         </div>
 
     </div>
-
     <!-- *** TOP BAR END *** -->
 
     <!-- *** NAVBAR ***
@@ -127,7 +152,7 @@
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="acceuil.php">Acceuil</a>
+                    <li class="active"><a href="index.html">Acceuil</a>
                     </li>
                     
 
@@ -229,207 +254,152 @@
         <!-- /.container -->
     </div>
     <!-- /#navbar -->
-    <!-- /#navbar -->
 
     <!-- *** NAVBAR END *** -->
+    <div id="all">
 
-
-<?php
-//include_once "config.php";
- include_once "../controller/formc.php";
- $db = config::getConnexion();
-        
-$formc = new formc ();
-$listform = $formc->afficherform();
-?>
-				<div>
-<div class="row text-center">
-					
-<?php
-$nb=0;
-foreach ($listform as $h) {
-	$nb++;
-				?>
-
-<br>
-
-  <img class="card-img-top" src="../img/<?php echo $h["image"] ?>" width="600" height="400" alt="Card image">
-  <div class="card-body">
-
-    <h4 class="card-title"><?php echo $h["titre"] ?></h4>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?=$nb?>">See Details</button>
-  </div>
-
-<!-- Modal -->
-  <div class="modal fade" id="myModal<?=$nb?>" role="dialog">
-    <div class="modal-dialog">
-
-      <!-- Modal content-->
-      <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"><?php echo $h["titre"] ?></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p><?php echo $h["description"] ?></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-      </div>
-    </div>
-  </div>
-
-<?php
-}
-
-?>
-</div>
-</div>
-
-						</div>
-<div><br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-
-        <!-- *** FOOTER ***
- _________________________________________________________ -->
-        <div id="footer" data-animate="fadeInUp">
+        <div id="content">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Pages</h4>
 
-                        <ul>
-                            <li><a href="text.html">About us</a>
-                            </li>
-                            <li><a href="text.html">Terms and conditions</a>
-                            </li>
-                            <li><a href="faq.html">FAQ</a>
-                            </li>
-                            <li><a href="contact.html">Contact us</a>
-                            </li>
-                        </ul>
+                <div class="col-md-12">
 
-                        <hr>
-
-                        <h4>User section</h4>
-
-                        <ul>
-                            <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-                            </li>
-                            <li><a href="register.html">Regiter</a>
-                            </li>
-                        </ul>
-
-                        <hr class="hidden-md hidden-lg hidden-sm">
-
-                    </div>
-                    <!-- /.col-md-3 -->
-
-                    <div class="col-md-3 col-sm-6">
-
-                        <h4>Top categories</h4>
-
-                        <h5>Men</h5>
-
-                        <ul>
-                            <li><a href="category.html">T-shirts</a>
-                            </li>
-                            <li><a href="category.html">Shirts</a>
-                            </li>
-                            <li><a href="category.html">Accessories</a>
-                            </li>
-                        </ul>
-
-                        <h5>Ladies</h5>
-                        <ul>
-                            <li><a href="category.html">T-shirts</a>
-                            </li>
-                            <li><a href="category.html">Skirts</a>
-                            </li>
-                            <li><a href="category.html">Pants</a>
-                            </li>
-                            <li><a href="category.html">Accessories</a>
-                            </li>
-                        </ul>
-
-                        <hr class="hidden-md hidden-lg">
-
-                    </div>
-                    <!-- /.col-md-3 -->
-
-                    <div class="col-md-3 col-sm-6">
-
-                        <h4>Where to find us</h4>
-
-                        <p><strong>Obaju Ltd.</strong>
-                            <br>13/25 New Avenue
-                            <br>New Heaven
-                            <br>45Y 73J
-                            <br>England
-                            <br>
-                            <strong>Great Britain</strong>
-                        </p>
-
-                        <a href="contact.html">Go to contact page</a>
-
-                        <hr class="hidden-md hidden-lg">
-
-                    </div>
-                    <!-- /.col-md-3 -->
-
-
-
-                    <div class="col-md-3 col-sm-6">
-
-                        <h4>Get the news</h4>
-
-                        <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-
-                        <form>
-                            <div class="input-group">
-
-                                <input type="text" class="form-control">
-
-                                <span class="input-group-btn">
-
-			    <button class="btn btn-default" type="button">Subscribe!</button>
-
-			</span>
-
-                            </div>
-                            <!-- /input-group -->
-                        </form>
-
-                        <hr>
-
-                        <h4>Stay in touch</h4>
-
-                        <p class="social">
-                            <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
-                            <a href="#" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
-                        </p>
-
-
-                    </div>
-                    <!-- /.col-md-3 -->
+                    <ul class="breadcrumb">
+                        <li><a href="index.html">Home</a>
+                        </li>
+                        <li><a href="#">My orders</a>
+                        </li>
+                        <li>Order # 1735</li>
+                    </ul>
 
                 </div>
-                <!-- /.row -->
+
+                <div class="col-md-3">
+                    <!-- *** CUSTOMER MENU ***
+ _________________________________________________________ -->
+                    <div class="panel panel-default sidebar-menu">
+
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Customer section</h3>
+                        </div>
+
+                        <div class="panel-body">
+
+                            <ul class="nav nav-pills nav-stacked">
+                                <li class="active">
+                                    <a href="customer-orders.html"><i class="fa fa-list"></i> My orders</a>
+                                </li>
+                                <li>
+                                    <a href="customer-wishlist.html"><i class="fa fa-heart"></i> My wishlist</a>
+                                </li>
+                                <li>
+                                    <a href="customer-account.html"><i class="fa fa-user"></i> My account</a>
+                                </li>
+                                <li>
+                                    <a href="index.html"><i class="fa fa-sign-out"></i> Logout</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <!-- *** CUSTOMER MENU END *** -->
+                </div>
+
+                <div class="col-md-9" id="customer-order">
+                    <div class="box">
+                        <h1>Order #1735</h1>
+
+                        <p class="lead">Order #1735 was placed on <strong>22/06/2013</strong> and is currently <strong>Being prepared</strong>.</p>
+                        <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
+
+                        <hr>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Product</th>
+                                        <th>Quantity</th>
+                                        <th>Unit price</th>
+                                        <th>Discount</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <button onclick="window.print()">Print this page</button>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <a href="#">
+                                                <img src="img/detailsquare.jpg" alt="White Blouse Armani">
+                                            </a>
+                                        </td>
+                                        <td><a href="#">White Blouse Armani</a>
+                                        </td>
+                                        <td>2</td>
+                                        <td>$123.00</td>
+                                        <td>$0.00</td>
+                                        <td>$246.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#">
+                                                <img src="img/basketsquare.jpg" alt="Black Blouse Armani">
+                                            </a>
+                                        </td>
+                                        <td><a href="#">Black Blouse Armani</a>
+                                        </td>
+                                        <td>1</td>
+                                        <td>$200.00</td>
+                                        <td>$0.00</td>
+                                        <td>$200.00</td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="5" class="text-right">Order subtotal</th>
+                                        <th>$446.00</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="5" class="text-right">Shipping and handling</th>
+                                        <th>$10.00</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="5" class="text-right">Tax</th>
+                                        <th>$0.00</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="5" class="text-right">Total</th>
+                                        <th>$456.00</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+                        <!-- /.table-responsive -->
+
+                        <div class="row addresses">
+                            <div class="col-md-6" align="left">
+                                <h2>Shipping Address</h2>
+                               <p> <?php echo $_POST["address"];
+                               echo $_POST['email'];
+echo $_POST['fullname'];?></p>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+                </div>
 
             </div>
             <!-- /.container -->
         </div>
+        <!-- /#content -->
+
+
+        <!-- *** FOOTER ***
+ _________________________________________________________ -->
+       
         <!-- /#footer -->
 
         <!-- *** FOOTER END *** -->
@@ -442,7 +412,7 @@ foreach ($listform as $h) {
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
-                    <p class="pull-left">© 2015 Your name goes here.</p>
+                    <p class="pull-left">© 2020 Sport News.</p>
 
                 </div>
                 <div class="col-md-6">
@@ -460,7 +430,7 @@ foreach ($listform as $h) {
     <!-- /#all -->
 
 
-
+    
 
     <!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->
@@ -474,6 +444,30 @@ foreach ($listform as $h) {
     <script src="../js/front.js"></script>
 
 
+
 </body>
 
 </html>
+<?php
+////ajout al la BD 
+// Create connection
+$conn = new mysqli("localhost","root","", "sportnews1");
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+echo $_POST['email'];
+echo $_POST['fullname'];
+$sql = "INSERT INTO orders (name,email,address,phone)
+VALUES ('".$_POST['fullname']."' , '".$_POST['email']."' , '".$_POST['address']."' ,  '".$_POST['phone']."' )   ";
+
+if ($conn->query($sql) === TRUE) {
+ 
+} else {
+  echo "Error: " . $sql . "<br>" . $conn->error;
+}
+
+
+$conn->close();
+?>
+

@@ -92,7 +92,7 @@ include "../config.php";
             </div>
             <div class="form-group">
               <label for="exampleInputCity1">Date de naissance</label>
-              <input type="date" class="form-control" id="Email" placeholder="yyyy-mm-dd" name="date_de_naissance"/>
+              <input type="date" class="form-control" id="Email" placeholder="yyyy-mm-dd" value="" min="1989-01-01" max="2005-12-31"  name="date_de_naissance" />
             </div>
             <div class="form-group">
               <label for="exampleInputCity1">Email</label>

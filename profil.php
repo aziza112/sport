@@ -48,7 +48,7 @@ if(!empty($_POST['nom'])
   $telephoneUp=$_POST["telephone"];
   $adresseUP=$_POST["adresse"];
   
-  $userC->modifierUtilisateur($id,$nomUp,$prenomUp,$cinUp,$dateUp,$emailUp,$telephoneUp,$adresseUp);
+  $userC->modifierUtilisateur($id,$nomUp,$prenomUp,$dateUp,$emailUp,$telephoneUp,$adresseUp);
   header('Location:profil.php');
   
   $_SESSION['prenom'] = $prenomUp;
@@ -79,7 +79,7 @@ else{
 <meta name="keywords" content="">
 
 <title>
-    Sport News
+    Sport News:PROFIL
 </title>
 
 <meta name="keywords" content="">
@@ -176,7 +176,7 @@ else{
                         <span class="sr-only">Toggle search</span>
                         <i class="fa fa-search"></i>
                     </button>
-                    <a class="btn btn-default navbar-toggle" href="basket.html">
+                    <a class="btn btn-default navbar-toggle" href="checkout1.html">
                         <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">(3) Pannier</span>
                     </a>
                 </div>
@@ -186,77 +186,9 @@ else{
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-left">
-                    <li class="active"><a href="index.html">Acceuil</a>
+                    <li class="active"><a href="acceuil.php">Acceuil</a>
                     </li>
-                    <li class="dropdown yamm-fw">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Actualité <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <div class="yamm-content">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <h5>Papeterie</h5>
-                                            <ul>
-                                                <li><a href="category.html">Papiers</a>
-                                                </li>
-                                                <li><a href="category.html">Cahiers, blocs & notes </a>
-                                                </li>
-                                                <li><a href="category.html">Courrier & étiquetage</a>
-                                                </li>
-                                              </ul>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <h5>Classements & archivages</h5>
-                                            <ul>
-                                                <li><a href="category.html">Intercalaires & Pochettes</a>
-                                                </li>
-                                                <li><a href="category.html">Chemises & dossiers</a>
-                                                </li>
-                                                <li><a href="category.html">Protection documents & présentation</a>
-                                                </li>
-                                                <li><a href="category.html">Boites de classement & archivage</a>
-                                                </li>
-                                                <li><a href="category.html">Classeurs</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <h5>Fourniture</h5>
-                                            <ul>
-                                                <li><a href="category.html">Ecritures & corrections</a>
-                                                </li>
-                                                <li><a href="category.html">Agrafage & perforation</a>
-                                                </li>
-                                                <li><a href="category.html">Fournitures & instruments</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <h5>Machines</h5>
-                                            <ul>
-                                                <li><a href="category.html">Destructeurs</a>
-                                                </li>
-                                                <li><a href="category.html">Spiraleuses</a>
-                                                </li>
-                                                <li><a href="category.html">Plastifieuses</a>
-                                                </li>
-                                                <li><a href="category.html">Calculatrices</a>
-                                                </li>
-                                            </ul>
-                                            <h5>Equipements</h5>
-                                            <ul>
-                                                <li><a href="category.html">Communication</a>
-                                                </li>
-                                                <li><a href="category.html">Agencements du bureau</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.yamm-content -->
-                            </li>
-                        </ul>
-                    </li>
+                    
 
                     <li class="dropdown yamm-fw">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Forum <b class="caret"></b></a>
@@ -264,76 +196,19 @@ else{
                             <li>
                                 <div class="yamm-content">
                                     <div class="row">
+                                        
+                                      
                                         <div class="col-sm-3">
-                                            <h5>Périphériques & Accessoires</h5> <!-- mytek as ref -->
+                                            <h5>Notre Forum</h5>
                                             <ul>
-                                                <li><a href="category.html">Claviers et Souris</a>
+                                                <li><a href="aziza.php">Forum</a>
                                                 </li>
-                                                <li><a href="category.html">Webcam</a>
-                                                </li>
-                                                <li><a href="category.html">Casque</a>
-                                                </li>
-                                                <li><a href="category.html">Haut Parleurs</a>
-                                                </li>
-                                                <li><a href="category.html">Sacs & Sacoches</a>
-                                                </li>
-                                                <li><a href="category.html">Refroidisseurs</a>
-                                                </li>
-                                                <li><a href="category.html">Accessoires Divers</a>
-                                                </li>
+                                               
                                             </ul>
+                                            
+                                            
                                         </div>
-                                        <div class="col-sm-3">
-                                            <h5>Impression</h5>
-                                            <ul>
-                                                <li><a href="category.html">Imprimantes</a>
-                                                </li>
-                                                <li><a href="category.html">PHOTOCOPIEURS</a>
-                                                </li>
-                                                <li><a href="category.html">Scanners</a>
-                                                </li>
-                                                <li><a href="category.html">Consommables</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <h5>Sauvgarde</h5>
-                                            <ul>
-                                                <li><a href="category.html">CD et DVD</a>
-                                                </li>
-                                                <li><a href="category.html">Clés USB</a>
-                                                </li>
-                                                <li><a href="category.html">Disques durs</a>
-                                                </li>
-                                                <li><a href="category.html">cartes mémoires</a>
-                                                </li>
-                                                <li><a href="category.html">Lecteur de cartes</a>
-                                                </li>
-                                                <li><a href="category.html">Disque Dur Externe</a>
-                                                </li>
-                                            </ul>
-                                            <h5>NETTOYAGE INFORMATIQUE</h5>
-                                            <ul>
-                                                <li><a href="category.html">Mousses</a>
-                                                </li>
-                                                <li><a href="category.html">Lingettes/Chiffons</a>
-                                                </li>
-                                                <li><a href="category.html">Pinceaux pour PC</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-sm-3">
-                                            <div class="banner">
-                                                <a href="#">
-                                                    <img src="img/banner.jpg" class="img img-responsive" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="banner">
-                                                <a href="#">
-                                                    <img src="img/banner2.jpg" class="img img-responsive" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <!-- /.yamm-content -->
@@ -357,19 +232,12 @@ else{
                                         <div class="col-sm-3">
                                             <h5>Notre Shop</h5>
                                             <ul>
-                                                <li><a href="shop.php">Tous les produits</a>
+                                                <li><a href="produit.php">Tous les produits</a>
                                                 </li>
-                                                <li><a href="category.html">Categories</a>
-                                                </li>
+                                               
                                             </ul>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <h5>Livraison</h5>
-                                            <ul>
-                                                <li><a href="category.html">Livraison à domicile</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        
                                         
 
                                     </div>
@@ -387,7 +255,7 @@ else{
             <div class="navbar-buttons">
 
                 <div class="navbar-collapse collapse right" id="basket-overview">
-                    <a href="basket.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm"> (3) Pannier</span></a>
+                    <a href="checkout1.html" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm"> (3) Pannier</span></a>
                 </div>
                 <!--/.nav-collapse -->
 
@@ -502,10 +370,9 @@ _________________________________________________________ -->
                             <label class="col-sm-3 col-form-label">ROLE</label>
                             <div class="col-sm-9">
                               <select class="form-control" disabled>
-                                <option <?=$role == 'Medecin' ? ' selected="selected"' : '';?>>Medecin</option>
-                                <option <?=$role == 'Secretaire' ? ' selected="selected"' : '';?>>Secretaire</option>
-                                <option <?=$role == 'Patient' ? ' selected="selected"' : '';?>>Patient</option>
-                                <option <?=$role == 'Admin' ? ' selected="selected"' : '';?>>Admin</option>
+                                <option <?=$role == 'Medecin' ? ' selected="selected"' : '';?>>utilisateur</option>
+                                <option <?=$role == 'Secretaire' ? ' selected="selected"' : '';?>>admin</option>
+                                
                               </select>
                             </div>
                           </div>
@@ -615,125 +482,17 @@ _________________________________________________________ -->
         <div id="footer" data-animate="fadeInUp">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Pages</h4>
-
-                        <ul>
-                            <li><a href="text.html">About us</a>
-                            </li>
-                            <li><a href="text.html">Terms and conditions</a>
-                            </li>
-                            <li><a href="faq.html">FAQ</a>
-                            </li>
-                            <li><a href="contact.html">Contact us</a>
-                            </li>
-                        </ul>
-
-                        <hr>
-
-                        <h4>User section</h4>
-
-                        <ul>
-                            <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-                            </li>
-                            <li><a href="register.html">Regiter</a>
-                            </li>
-                        </ul>
-
-                        <hr class="hidden-md hidden-lg hidden-sm">
-
-                    </div>
+                   
                     <!-- /.col-md-3 -->
 
-                    <div class="col-md-3 col-sm-6">
-
-                        <h4>Top categories</h4>
-
-                        <h5>Men</h5>
-
-                        <ul>
-                            <li><a href="category.html">T-shirts</a>
-                            </li>
-                            <li><a href="category.html">Shirts</a>
-                            </li>
-                            <li><a href="category.html">Accessories</a>
-                            </li>
-                        </ul>
-
-                        <h5>Ladies</h5>
-                        <ul>
-                            <li><a href="category.html">T-shirts</a>
-                            </li>
-                            <li><a href="category.html">Skirts</a>
-                            </li>
-                            <li><a href="category.html">Pants</a>
-                            </li>
-                            <li><a href="category.html">Accessories</a>
-                            </li>
-                        </ul>
-
-                        <hr class="hidden-md hidden-lg">
-
-                    </div>
+                    
                     <!-- /.col-md-3 -->
 
-                    <div class="col-md-3 col-sm-6">
-
-                        <h4>Where to find us</h4>
-
-                        <p><strong>Obaju Ltd.</strong>
-                            <br>13/25 New Avenue
-                            <br>New Heaven
-                            <br>45Y 73J
-                            <br>England
-                            <br>
-                            <strong>Great Britain</strong>
-                        </p>
-
-                        <a href="contact.html">Go to contact page</a>
-
-                        <hr class="hidden-md hidden-lg">
-
-                    </div>
-                    <!-- /.col-md-3 -->
+                    
 
 
 
-                    <div class="col-md-3 col-sm-6">
-
-                        <h4>Get the news</h4>
-
-                        <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-
-                        <form>
-                            <div class="input-group">
-
-                                <input type="text" class="form-control">
-
-                                <span class="input-group-btn">
-
-			    <button class="btn btn-default" type="button">Subscribe!</button>
-
-			</span>
-
-                            </div>
-                            <!-- /input-group -->
-                        </form>
-
-                        <hr>
-
-                        <h4>Stay in touch</h4>
-
-                        <p class="social">
-                            <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
-                            <a href="#" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
-                        </p>
-
-
-                    </div>
+                    
                     <!-- /.col-md-3 -->
 
                 </div>

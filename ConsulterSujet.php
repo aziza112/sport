@@ -1,4 +1,21 @@
+<?PHP
+    include "../controller/SujetCore.php";
+    include "../controller/CommentaireCore.php";
+    include "../model/Sujet.php";
 
+
+    $sujetC = new SujetCore();
+    $sujet = $sujetC->getsujet($_GET["id"]);
+
+    $commentaireC = new CommentaireCore();
+    $listeCommentaires = $commentaireC->afficherCommentaires($_GET["id"]);
+
+
+
+
+    
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +30,7 @@
     <meta name="keywords" content="">
 
     <title>
-        Obaju : e-commerce template
+        Sport News
     </title>
 
     <meta name="keywords" content="">
@@ -26,6 +43,9 @@
     <link href="../css/animate.min.css" rel="stylesheet">
     <link href="../css/owl.carousel.css" rel="stylesheet">
     <link href="../css/owl.theme.css" rel="stylesheet">
+
+
+    <script src="https://kit.fontawesome.com/6293f721e5.js" crossorigin="anonymous"></script>
 
     <!-- theme stylesheet -->
     <link href="../css/style.default.css" rel="stylesheet" id="theme-stylesheet">
@@ -48,17 +68,14 @@
  <div id="top">
         <div class="container">
             <div class="col-md-6 offer" data-animate="fadeInDown">
-                <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake"> Bienvenue </a>  <a href="#">chez Sport News!</a>
-            </div>
+            <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake"> Bienvenue </a>  <a href="#">chez Sport News!</a>            </div>
             <div class="col-md-6" data-animate="fadeInDown">
                 <ul class="menu">
-                   
-                    <li><a href="profil.php">Mon Profil</a>
+                <li><a href="profil.php">Mon Profil</a>
                     </li>
                     <li><a href="logout.php">se deconnecter</a>
                     </li>
-                    <!--<li><a href="#">vu viewed</a>
-                    </li>-->
+                    
                 </ul>
             </div>
         </div>
@@ -71,7 +88,7 @@
                         <h4 class="modal-title" id="Login">Customer login</h4>
                     </div>
                     <div class="modal-body">
-                        <form  method="post">
+                        <form action="customer-orders.html" method="post">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="email-modal" placeholder="email">
                             </div>
@@ -86,7 +103,7 @@
                         </form>
 
                         <p class="text-center text-muted">Not registered yet?</p>
-                        <p class="text-center text-muted"><a href="creercompte.php"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+                        <p class="text-center text-muted"><a href="register.html"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
 
                     </div>
                 </div>
@@ -229,74 +246,158 @@
         <!-- /.container -->
     </div>
     <!-- /#navbar -->
+
+    <!-- *** NAVBAR END *** -->
     <!-- /#navbar -->
 
     <!-- *** NAVBAR END *** -->
 
+    <div id="all">
 
-<?php
-//include_once "config.php";
- include_once "../controller/formc.php";
- $db = config::getConnexion();
-        
-$formc = new formc ();
-$listform = $formc->afficherform();
-?>
-				<div>
-<div class="row text-center">
-					
-<?php
-$nb=0;
-foreach ($listform as $h) {
-	$nb++;
-				?>
+        <div id="content">
+            <div class="container">
 
-<br>
+                <div class="col-sm-12">
 
-  <img class="card-img-top" src="../img/<?php echo $h["image"] ?>" width="600" height="400" alt="Card image">
-  <div class="card-body">
+                    <ul class="breadcrumb">
 
-    <h4 class="card-title"><?php echo $h["titre"] ?></h4>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?=$nb?>">See Details</button>
-  </div>
+                        <li><a href="index.html">Home</a>
+                        </li>
+                        <li><a href="blog.html">Blog</a>
+                        </li>
+                        <li>Blog post</li>
+                    </ul>
+                </div>
+                
 
-<!-- Modal -->
-  <div class="modal fade" id="myModal<?=$nb?>" role="dialog">
-    <div class="modal-dialog">
+                <div class="col-sm-9" id="blog-post">
 
-      <!-- Modal content-->
-      <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title"><?php echo $h["titre"] ?></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p><?php echo $h["description"] ?></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-      </div>
-    </div>
-  </div>
 
-<?php
-}
+                    <div class="box">
+                    <?php  foreach ($sujet as $s): ?>
 
-?>
-</div>
-</div>
+                        <h1>Titre :<?php  echo $s['titre']; ?></h1>
 
-						</div>
-<div><br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+                        <h2>
+                        Description:
+                        <?php  echo $s['texte']; ?></h2>
+                        
+                        Etat :
+                        <?php 
+                         if ($s['etat']== 0){
+                             ?>
+                             <i class="fas fa-times"></i>
+                        <?php
+                            echo "Non Résolu";
+                        }
+                        ?>
+                    
+                        <?php
+                        if ($s['etat']== 1){
+                        ?>
+                        <i class="fas fa-check-circle"></i>
+                        <?php
+                            
+                            echo "Sujet Résolu";
+                        }
+                        ?>
+                        <div class="d-flex flex-row-reverse">
+                            <div class="ml-auto p-2">
+                            <a href="ResoudreSujet.php?idtoresoudre=<?php echo $s['id']; ?>"> 
+                                <button class="btn btn-warning" ><i class="fas fa-check-circle"></i> Résoudre</button>
+                            </a>
+
+                            <a href="AnnulerResoudreSujet.php?idtoresoudre=<?php echo $s['id']; ?>"> 
+                                <button class="btn btn-info" ><i class="fas fa-times"></i> Annuler la Résolution</button>
+                            </a>
+                            </div>
+                        </div>
+
+
+                    <?php endforeach ?>
+
+                        <div id="comment-form" data-animate="fadeInUp">
+
+                            <h4>Liste des Commentaires</h4>
+
+  
+                                        <div class="form-group">
+                                            <table border=1 align = 'center'>
+                                                <tr>
+                                                    <th>Contenu</th>
+                                                    <th>user</th>
+                                                    <th>Action</th>
+                                                </tr>
+
+                                                <?PHP
+                                                     foreach ($listeCommentaires as $commentaire): {
+                                                ?>
+                                                    <tr>
+                                                        <td><?PHP echo $commentaire['contenu']; ?></td>
+                                                        <td><?PHP echo $commentaire['userid']; ?></td> <!-- a changer  affichage du nom apres integration de la session-->
+                                                        <td> 
+                                                            <?php if($commentaire['userid'] == 10 ): ?>   <!-- a changer apres integration de la session-->
+                                                                <a href="SupprimerCommentaire.php?sujet_id=<?php echo $_GET["id"]; ?>&comtodelete=<?php echo $commentaire['id']; ?>"> 
+                                                            <button class="btn btn-danger" ><i class="fas fa-eye"></i> supprimer</button>
+                                                                </a>
+                                                            <?php endif ?>
+                                                         </td>					
+                                                    </tr>
+                                                <?PHP
+                                                    }
+                                                ?>
+                                                <?php endforeach ?>
+
+                                            </table>
+                                        </div>
+
+
+                            <form method="post" action="addCommentaire.php">
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="comment">Nouveau Commentaire <span class="required">*</span>
+                                            </label>
+                                            <textarea class="form-control" name="contenu" id="contenu"  rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input hidden type="text" name="sujet_id" value="<?php echo $_GET['id'] ;?>">
+
+                                <div class="row">
+                                    <div class="col-sm-12 text-right">
+                                        <button class="btn btn-primary"><i class="fa fa-comment-o"></i> Envoyer</button>
+                                    </div>
+                                </div>
+
+
+                            </form>
+
+                        </div>
+                        <!-- /#comment-form -->
+
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /#blog-post -->
+
+                <div class="col-md-3">
+                    <!-- *** BLOG MENU ***
+ _________________________________________________________ -->
+                   
+                    <!-- /.col-md-3 -->
+
+                    <!-- *** BLOG MENU END *** -->
+
+                    
+                </div>
+
+
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
 
         <!-- *** FOOTER ***
  _________________________________________________________ -->
@@ -304,83 +405,21 @@ foreach ($listform as $h) {
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
-                        <h4>Pages</h4>
-
-                        <ul>
-                            <li><a href="text.html">About us</a>
-                            </li>
-                            <li><a href="text.html">Terms and conditions</a>
-                            </li>
-                            <li><a href="faq.html">FAQ</a>
-                            </li>
-                            <li><a href="contact.html">Contact us</a>
-                            </li>
-                        </ul>
-
-                        <hr>
-
-                        <h4>User section</h4>
-
-                        <ul>
-                            <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-                            </li>
-                            <li><a href="register.html">Regiter</a>
-                            </li>
-                        </ul>
-
-                        <hr class="hidden-md hidden-lg hidden-sm">
+                     
 
                     </div>
                     <!-- /.col-md-3 -->
 
                     <div class="col-md-3 col-sm-6">
 
-                        <h4>Top categories</h4>
-
-                        <h5>Men</h5>
-
-                        <ul>
-                            <li><a href="category.html">T-shirts</a>
-                            </li>
-                            <li><a href="category.html">Shirts</a>
-                            </li>
-                            <li><a href="category.html">Accessories</a>
-                            </li>
-                        </ul>
-
-                        <h5>Ladies</h5>
-                        <ul>
-                            <li><a href="category.html">T-shirts</a>
-                            </li>
-                            <li><a href="category.html">Skirts</a>
-                            </li>
-                            <li><a href="category.html">Pants</a>
-                            </li>
-                            <li><a href="category.html">Accessories</a>
-                            </li>
-                        </ul>
-
-                        <hr class="hidden-md hidden-lg">
+                        
 
                     </div>
                     <!-- /.col-md-3 -->
 
                     <div class="col-md-3 col-sm-6">
 
-                        <h4>Where to find us</h4>
-
-                        <p><strong>Obaju Ltd.</strong>
-                            <br>13/25 New Avenue
-                            <br>New Heaven
-                            <br>45Y 73J
-                            <br>England
-                            <br>
-                            <strong>Great Britain</strong>
-                        </p>
-
-                        <a href="contact.html">Go to contact page</a>
-
-                        <hr class="hidden-md hidden-lg">
+                        
 
                     </div>
                     <!-- /.col-md-3 -->
@@ -389,36 +428,10 @@ foreach ($listform as $h) {
 
                     <div class="col-md-3 col-sm-6">
 
-                        <h4>Get the news</h4>
+                      
 
-                        <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
 
-                        <form>
-                            <div class="input-group">
-
-                                <input type="text" class="form-control">
-
-                                <span class="input-group-btn">
-
-			    <button class="btn btn-default" type="button">Subscribe!</button>
-
-			</span>
-
-                            </div>
-                            <!-- /input-group -->
-                        </form>
-
-                        <hr>
-
-                        <h4>Stay in touch</h4>
-
-                        <p class="social">
-                            <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                            <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
-                            <a href="#" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
-                            <a href="#" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
-                            <a href="#" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
-                        </p>
+                       
 
 
                     </div>
@@ -442,7 +455,7 @@ foreach ($listform as $h) {
         <div id="copyright">
             <div class="container">
                 <div class="col-md-6">
-                    <p class="pull-left">© 2015 Your name goes here.</p>
+                    <p class="pull-left">© 2020 Sport News</p>
 
                 </div>
                 <div class="col-md-6">
@@ -460,7 +473,7 @@ foreach ($listform as $h) {
     <!-- /#all -->
 
 
-
+    
 
     <!-- *** SCRIPTS TO INCLUDE ***
  _________________________________________________________ -->
@@ -472,6 +485,10 @@ foreach ($listform as $h) {
     <script src="../js/bootstrap-hover-dropdown.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/front.js"></script>
+
+
+
+
 
 
 </body>
